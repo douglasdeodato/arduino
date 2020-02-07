@@ -21,6 +21,9 @@ int angleStep =5;
 #define RIGHT  2  // pin 2 is connected to right button
 
 void setup() {
+  pinMode(2, INPUT_PULLUP);
+  pinMode(12, INPUT_PULLUP);
+  pinMode(132, OUTPUT);
   // Servo button demo by Robojax.com
   Serial.begin(9600);          //  setup serial
   myservo.attach(9);  // attaches the servo on pin 9 to the servo object
@@ -28,9 +31,21 @@ void setup() {
   pinMode(RIGHT,INPUT_PULLUP);// assing pin 2 as input for right button
   myservo.write(angle);// send servo to the middle at 90 degrees
  Serial.println("Robojax Servo Button ");
+ 
 }
 
 void loop() {
+   if (digitalRead(2) == LOW) {
+    digitalWrite(13, HIGH);
+  }
+   else if (digitalRead(12) == LOW) {
+    digitalWrite(13, HIGH);
+  }
+  else {
+    // turn off LED.
+    digitalWrite(13, LOW);
+  
+  }
   // Servo button demo by Robojax.com
   while(digitalRead(RIGHT) == LOW){
 
@@ -67,6 +82,8 @@ void loop() {
     
   delay(100); // waits for the servo to get there
   }// 
+
+
 
   
 }
