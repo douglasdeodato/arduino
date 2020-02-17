@@ -38,7 +38,9 @@ void setup() {
 void loop(){
 
   // leitura dos potenciometros
-  motor1 = map(analogRead(pot1),0,1023,0,180);
+  // https://www.arduino.cc/reference/en/language/functions/math/map/
+  //// converts reading from potentiometer to an output value in degrees of rotation that the servo can understand 
+  motor1 = map(analogRead(pot1),0,1023,0,180); 
 
 
   // posicionamento dos potenciometros 
